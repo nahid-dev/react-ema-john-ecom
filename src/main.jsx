@@ -14,6 +14,8 @@ import Orders from "./component/Orders/Orders";
 import Inventory from "./component/Inventory/Inventory";
 import Login from "./component/Login/Login";
 import cartProductsLoader from "./cartProductsLoader/cartProductsLoader";
+import { Toaster } from "react-hot-toast";
+import SignUp from "./component/SignUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login></Login>,
       },
+      {
+        path: "signUp",
+        element: <SignUp></SignUp>,
+      },
     ],
   },
 ]);
@@ -44,5 +50,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster></Toaster>
   </React.StrictMode>
 );

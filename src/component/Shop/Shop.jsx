@@ -36,8 +36,12 @@ const Shop = () => {
     const newCart = [...cart, product];
     setCart(newCart);
     addToDb(product.id);
+    toast.success("product added");
   };
-
+  const handleClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
   return (
     <div className="shop-container">
       <div className="product-container">
@@ -50,10 +54,11 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart} handleClearCart={handleClearCart}></Cart>
       </div>
     </div>
   );
 };
 import "./Shop.css";
+import { toast } from "react-hot-toast";
 export default Shop;
