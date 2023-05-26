@@ -25,3 +25,21 @@
 .btn-clear-cart .delete-icon {
   color: #fff;
 }
+.checkout-link {
+  text-decoration: none;
+}
+.checkout-btn {
+  width: 90%;
+  margin: 10px auto;
+  background-color: #ff9900;
+  border-radius: 4px;
+  color: #fff;
+  height: 56px;
+  font-size: 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-btn .checkout-icon {
+  color: #fff;
+}

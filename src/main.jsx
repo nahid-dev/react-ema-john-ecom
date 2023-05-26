@@ -16,6 +16,9 @@ import Login from "./component/Login/Login";
 import cartProductsLoader from "./cartProductsLoader/cartProductsLoader";
 import { Toaster } from "react-hot-toast";
 import SignUp from "./component/SignUp/SignUp";
+import AuthProviders from "./component/providers/AuthProviders";
+import CheckOut from "./component/CheckOut/CheckOut";
+import PrivetRoutes from "./component/routes/PrivetRoutes";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Shop></Shop>,
+        loader: () => fetch("http://localhost:5000/totalProducts"),
       },
       {
         path: "orders",
@@ -33,7 +37,19 @@ const router = createBrowserRouter([
       },
       {
         path: "inventory",
-        element: <Inventory></Inventory>,
+        element: (
+          <PrivetRoutes>
+            <Inventory></Inventory>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/checkOUt",
+        element: (
+          <PrivetRoutes>
+            <CheckOut></CheckOut>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "login",
@@ -49,7 +65,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    <Toaster></Toaster>
+    <AuthProviders>
+      <RouterProvider router={router} />
+      <Toaster></Toaster>
+    </AuthProviders>
   </React.StrictMode>
 );
